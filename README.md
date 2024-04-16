@@ -1,12 +1,12 @@
 # Administracion de base de datos 8-9
 
-## Equipos
-
-### ArangoDB
+## Docente
 
 * César Sáenz
 
 ### CassandraDB
+
+Esta rama es perteneciente al equipo de CassandraDB el cual esta conformado por:
 
 * Jorge Bugarini
 * Gerardo Delgado
