@@ -14,3 +14,6 @@
 * Jesús Torres
 * Sebastian López
 * Andrés Sáenz
+
+### RedHat Datagrid
+* Carlos Ramos
