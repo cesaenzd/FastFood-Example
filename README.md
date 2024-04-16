@@ -4,3 +4,7 @@
 
 ### ArangoDB
 * César Sáenz
+
+### Equipo RavenDB
+
+* Brandon Vargas
