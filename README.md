@@ -17,3 +17,6 @@
 
 ### RedHat Datagrid
 * Carlos Ramos
+
+### Couch DB
+* Daniel Gonzalez
