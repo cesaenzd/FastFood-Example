@@ -4,3 +4,6 @@
 
 ### ArangoDB
 * César Sáenz
+
+### Equipo Neo4j
+* Fernando Esparza Enriquez
