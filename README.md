@@ -4,3 +4,6 @@
 
 ### ArangoDB
 * César Sáenz
+
+### Equipo Redis
+* Sebastian Emilio Murillo Andrade
