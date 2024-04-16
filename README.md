@@ -7,3 +7,4 @@
 
 ### Equipo Redis
 * Sebastian Emilio Murillo Andrade
+* Estefanía Hernández Meraz
