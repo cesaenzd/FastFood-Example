@@ -14,3 +14,6 @@ Esta rama es perteneciente al equipo de CassandraDB el cual esta conformado por:
 * Jesús Torres
 * Sebastian López
 * Andrés Sáenz
+
+### RedHat Datagrid
+* Carlos Ramos
