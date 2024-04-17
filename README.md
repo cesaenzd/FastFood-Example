@@ -5,3 +5,7 @@
 ### ArangoDB
 
 * César Sáenz
+
+### RedHat Datagrid
+
+* Carlos Ramos
