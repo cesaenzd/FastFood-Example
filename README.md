@@ -5,12 +5,3 @@
 ### ArangoDB
 
 * César Sáenz
-
-### CassandraDB
-
-* Jorge Bugarini
-* Gerardo Delgado
-* Diego Martin del Campo
-* Jesús Torres
-* Sebastian López
-* Andrés Sáenz
