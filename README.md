@@ -3,3 +3,11 @@
 ## Docente
 
 * César Sáenz
+
+### CassandraDB
+* Jorge Bugarini
+* Jesús Torres
+* Sebastian Ibarra
+* Diego Martin del Campo
+* Andrés Sáenz
+* Gerardo Delgado
