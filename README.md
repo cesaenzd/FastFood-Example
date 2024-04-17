@@ -2,6 +2,6 @@
 
 ## Equipos
 
-### ArangoDB
+### RavenDb
 
-* César Sáenz
+* Erick Siqueiros
