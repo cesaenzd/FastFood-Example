@@ -3,7 +3,3 @@
 ## Docente
 
 * César Sáenz
-
-### CassandraDB
-
-* Jorge Bugarini
