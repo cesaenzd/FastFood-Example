@@ -2,15 +2,7 @@
 
 ## Equipos
 
-### ArangoDB
+### MongoDB
 
-* César Sáenz
+* Iran America Chavarria Monge
 
-### CassandraDB
-
-* Jorge Bugarini
-* Gerardo Delgado
-* Diego Martin del Campo
-* Jesús Torres
-* Sebastian López
-* Andrés Sáenz
