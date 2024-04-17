@@ -5,6 +5,7 @@
 * César Sáenz
 
 ### CassandraDB
+
 * Jorge Bugarini
 * Jesús Torres
 * Sebastian Ibarra
