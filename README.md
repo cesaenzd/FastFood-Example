@@ -1,7 +1,7 @@
 # Administracion de base de datos 8-9
 
-## Equipos
+## Equipos 
 
-### ArangoDB
+### MongoDB
 
-* César Sáenz
+* Jesus Alberto Jacquez Fabela
