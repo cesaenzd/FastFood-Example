@@ -7,3 +7,4 @@
 
 ### Equipo Neo4j
 * Fernando Esparza Enriquez
+* Paola Guadalupe Muñoz Montes
