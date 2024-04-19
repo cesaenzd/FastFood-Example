@@ -2,12 +2,8 @@
 
 ## Equipos
 
-### MongoDB
-
-* Iran America Chavarria Monge
-
-### ArangoDB
-* César Sáenz
 
 ### Equipo MongoDB
 * Leonardo Alberto Gonzalez Carmona
+
+* Iran America Chavarria Monge
