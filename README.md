@@ -11,5 +11,5 @@
 
 ### Equipo Neo4j
 * Fernando Esparza Enriquez
-* Bryan Quintana
 * Paola Guadalupe Muñoz Montes
+* Bryan Alexis Quintana Juarez
