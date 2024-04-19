@@ -2,10 +2,12 @@
 
 ## Equipos
 
+### ArangoDB
+
+* César Sáenz
+
 ### MongoDB
 
 * Iran America Chavarria Monge
 
-### ArangoDB
-* César Sáenz
 
