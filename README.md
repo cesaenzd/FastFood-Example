@@ -5,3 +5,6 @@
 ### ArangoDB
 
 * César Sáenz
+
+### Equipo Redis
+* Hector Alejandro Rodriguez Barron
