@@ -7,3 +7,7 @@
 * Leonardo Alberto Gonzalez Carmona
 
 * Iran America Chavarria Monge
+
+### ArangoDB
+* César Sáenz
+
