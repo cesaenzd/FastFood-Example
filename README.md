@@ -13,3 +13,5 @@
 * Fernando Esparza Enriquez
 * Paola Guadalupe Muñoz Montes
 * Bryan Alexis Quintana Juarez
+* Edgar Alejandro Martinez Chavez
+* Gabriel Josue Marquez Torres
