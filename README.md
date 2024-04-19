@@ -2,10 +2,14 @@
 
 ## Equipos
 
-### ArangoDB
+### MongoDB
 
+* Iran America Chavarria Monge
+
+### ArangoDB
 * César Sáenz
 
+<<<<<<< HEAD
 ### CassandraDB
 
 * Jorge Bugarini
@@ -17,3 +21,5 @@
 
 ### RedHat Datagrid
 * Carlos Ramos
+=======
+>>>>>>> origin/16550461
