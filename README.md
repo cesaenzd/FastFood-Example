@@ -17,3 +17,6 @@
 * Bryan Alexis Quintana Juarez
 * Edgar Alejandro Martinez Chavez
 * Gabriel Josue Marquez Torres
+
+### Equipo Redis
+* Hector Alejandro Rodriguez Barron
