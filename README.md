@@ -6,6 +6,6 @@
 
 * Iran America Chavarria Monge
 
-### EQuipo tal
-* i1
+### ArangoDB
+* César Sáenz
 
