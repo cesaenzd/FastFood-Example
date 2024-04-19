@@ -10,3 +10,4 @@
 
 ### Equipo MongoDB
 * Leonardo Alberto Gonzalez Carmona
+* Jesus Alberto Jacquez Fabela
