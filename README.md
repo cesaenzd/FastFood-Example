@@ -26,7 +26,7 @@
 
 * Hector Alejandro Rodriguez Barron
 
-## Equipo Cassandra
+### Equipo Cassandra
 
 * Jorge Eduardo Escobar Bugarini
 * Edgar Gerardo Delgado Cerrillo
