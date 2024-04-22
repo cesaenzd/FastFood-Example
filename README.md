@@ -4,7 +4,7 @@
 
 * César Sáenz
 
-### CassandraDB
+### Cassandra
 
 * Jorge Bugarini
 * Jesús Torres
