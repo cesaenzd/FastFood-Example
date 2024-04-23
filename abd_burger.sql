@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-04-2024 a las 03:48:03
+-- Tiempo de generación: 23-04-2024 a las 16:42:07
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,6 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `abd_burger`
 --
+-- DROP DATABASE IF EXISTS abd_burger;
 CREATE DATABASE IF NOT EXISTS `abd_burger` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `abd_burger`;
 
@@ -29,6 +30,8 @@ DELIMITER $$
 --
 DROP PROCEDURE IF EXISTS `sp_cat_burger`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_cat_burger` (`p_id` INT, `p_name` VARCHAR(20), `p_desc` VARCHAR(150), `p_price` FLOAT)   BEGIN
+	DECLARE v_operation VARCHAR(20);
+
 	IF p_id > 0 THEN
 		UPDATE cat_burger SET 
 			name = upper(p_name),
@@ -36,14 +39,16 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_cat_burger` (`p_id` INT, `p_name
             price = p_price
 		WHERE
 			id = p_id;
+		SET v_operation = 'UPDATE';
 	ELSE
 		INSERT INTO cat_burger (name, description, price)
         VALUES (upper(p_name), upper(p_desc), p_price);
     
 		SELECT last_insert_id() INTO p_id;
+		SET v_operation = 'INSERT';
     END IF;
     
-    SELECT p_id;
+    SELECT p_id, v_operation;
 END$$
 
 --
@@ -135,7 +140,8 @@ INSERT INTO `cat_burger` (`id`, `name`, `description`, `price`) VALUES
 (5, 'AGUACATOSA', 'HAMBURGUESA SUPER CON DOBLE AGUACATE', 79.79),
 (7, 'CAPRICHOSA', 'HAMBURGUESA CON HUEVO, TOCINO, JAMON Y QUESO', 39.99),
 (8, 'DIABLA', 'HAMBURGUESA SUPER CON JALAPEÑO', 73.73),
-(9, 'DIABLILLA', 'HAMBURGUESA SUPER CON JALAPEÑO', 10.99);
+(9, 'DIABLILLA', 'HAMBURGUESA SUPER CON JALAPEÑO', 10.99),
+(10, 'BIG CANGREBURGER', 'BURGER CON CARNE DE CANGREJO', 107.99);
 
 --
 -- Disparadores `cat_burger`
@@ -231,7 +237,9 @@ INSERT INTO `log_cat_burger` (`id`, `id_cat_burger`, `name`, `description`, `pri
 (8, 7, 'CAPRICHOSA', 'HAMBURGUESA CON HUEVO, TOCINO, JAMON Y QUESO', 39.99, 'UPDATE', 'root@localhost', NULL, '2024-04-17 12:33:05'),
 (9, 8, 'DIABLE', 'HAMBURGUESA SUPER CON JALAPEÑO', 10.99, 'INSERT', 'root@localhost', NULL, '2024-04-22 19:44:16'),
 (10, 9, 'DIABLILLA', 'HAMBURGUESA SUPER CON JALAPEÑO', 10.99, 'INSERT', 'root@localhost', NULL, '2024-04-22 19:44:59'),
-(11, 8, 'DIABLA', 'HAMBURGUESA SUPER CON JALAPEÑO', 73.73, 'UPDATE', 'root@localhost', NULL, '2024-04-22 19:45:51');
+(11, 8, 'DIABLA', 'HAMBURGUESA SUPER CON JALAPEÑO', 73.73, 'UPDATE', 'root@localhost', NULL, '2024-04-22 19:45:51'),
+(12, 10, 'BIG CANGREBURGER', 'BURGER CON CARNE DE CANGREJO', 1.99, 'INSERT', 'root@localhost', NULL, '2024-04-23 14:33:43'),
+(13, 10, 'BIG CANGREBURGER', 'BURGER CON CARNE DE CANGREJO', 107.99, 'UPDATE', 'root@localhost', NULL, '2024-04-23 14:35:38');
 
 -- --------------------------------------------------------
 
@@ -370,7 +378,7 @@ ALTER TABLE `burger`
 -- AUTO_INCREMENT de la tabla `cat_burger`
 --
 ALTER TABLE `cat_burger`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `cat_ingredient`
@@ -382,7 +390,7 @@ ALTER TABLE `cat_ingredient`
 -- AUTO_INCREMENT de la tabla `log_cat_burger`
 --
 ALTER TABLE `log_cat_burger`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `order`
