@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-04-2024 a las 20:42:25
+-- Tiempo de generación: 23-04-2024 a las 03:48:03
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -22,6 +22,48 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `abd_burger` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `abd_burger`;
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+DROP PROCEDURE IF EXISTS `sp_cat_burger`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_cat_burger` (`p_id` INT, `p_name` VARCHAR(20), `p_desc` VARCHAR(150), `p_price` FLOAT)   BEGIN
+	IF p_id > 0 THEN
+		UPDATE cat_burger SET 
+			name = upper(p_name),
+            description = upper(p_desc),
+            price = p_price
+		WHERE
+			id = p_id;
+	ELSE
+		INSERT INTO cat_burger (name, description, price)
+        VALUES (upper(p_name), upper(p_desc), p_price);
+    
+		SELECT last_insert_id() INTO p_id;
+    END IF;
+    
+    SELECT p_id;
+END$$
+
+--
+-- Funciones
+--
+DROP FUNCTION IF EXISTS `f_count_ingredients`$$
+CREATE DEFINER=`root`@`localhost` FUNCTION `f_count_ingredients` (`p_id_cat_burger` INT) RETURNS INT(11)  BEGIN
+	DECLARE v_count_ingredients INT;
+    
+    SELECT
+		count(*) INTO v_count_ingredients
+	FROM
+		vw_burger
+	WHERE
+		burger = (SELECT name FROM cat_burger WHERE id = p_id_cat_burger);
+    
+RETURN v_count_ingredients;
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -91,7 +133,9 @@ INSERT INTO `cat_burger` (`id`, `name`, `description`, `price`) VALUES
 (3, 'TOCINEITOR', 'HAMBURGUESA CON CARNE, TOCINO Y QUESO', 49.99),
 (4, 'SUPER', 'HAMBURGUESA CON CARNE, JAMON, TOCINO Y QUESO', 59.99),
 (5, 'AGUACATOSA', 'HAMBURGUESA SUPER CON DOBLE AGUACATE', 79.79),
-(7, 'CAPRICHOSA', 'HAMBURGUESA CON HUEVO, TOCINO, JAMON Y QUESO', 39.99);
+(7, 'CAPRICHOSA', 'HAMBURGUESA CON HUEVO, TOCINO, JAMON Y QUESO', 39.99),
+(8, 'DIABLA', 'HAMBURGUESA SUPER CON JALAPEÑO', 73.73),
+(9, 'DIABLILLA', 'HAMBURGUESA SUPER CON JALAPEÑO', 10.99);
 
 --
 -- Disparadores `cat_burger`
@@ -184,7 +228,10 @@ INSERT INTO `log_cat_burger` (`id`, `id_cat_burger`, `name`, `description`, `pri
 (5, 5, 'AGUACATOSA', 'HAMBURGUESA SUPER CON DOBLE AGUACATE', 79.79, 'UPDATE', 'root@localhost', NULL, '2024-04-17 12:19:57'),
 (6, 6, 'CAPRICHOSA', 'HAMBURGUESA SUPER CON AGUACATE Y 2 HUEVOS', 89.89, 'UPDATE', 'root@localhost', NULL, '2024-04-17 12:19:57'),
 (7, 6, 'CAPRICHOSA', 'HAMBURGUESA SUPER CON AGUACATE Y 2 HUEVOS', 89.89, 'DELETE', 'root@localhost', NULL, '2024-04-17 12:32:35'),
-(8, 7, 'CAPRICHOSA', 'HAMBURGUESA CON HUEVO, TOCINO, JAMON Y QUESO', 39.99, 'UPDATE', 'root@localhost', NULL, '2024-04-17 12:33:05');
+(8, 7, 'CAPRICHOSA', 'HAMBURGUESA CON HUEVO, TOCINO, JAMON Y QUESO', 39.99, 'UPDATE', 'root@localhost', NULL, '2024-04-17 12:33:05'),
+(9, 8, 'DIABLE', 'HAMBURGUESA SUPER CON JALAPEÑO', 10.99, 'INSERT', 'root@localhost', NULL, '2024-04-22 19:44:16'),
+(10, 9, 'DIABLILLA', 'HAMBURGUESA SUPER CON JALAPEÑO', 10.99, 'INSERT', 'root@localhost', NULL, '2024-04-22 19:44:59'),
+(11, 8, 'DIABLA', 'HAMBURGUESA SUPER CON JALAPEÑO', 73.73, 'UPDATE', 'root@localhost', NULL, '2024-04-22 19:45:51');
 
 -- --------------------------------------------------------
 
@@ -323,7 +370,7 @@ ALTER TABLE `burger`
 -- AUTO_INCREMENT de la tabla `cat_burger`
 --
 ALTER TABLE `cat_burger`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `cat_ingredient`
@@ -335,7 +382,7 @@ ALTER TABLE `cat_ingredient`
 -- AUTO_INCREMENT de la tabla `log_cat_burger`
 --
 ALTER TABLE `log_cat_burger`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `order`
