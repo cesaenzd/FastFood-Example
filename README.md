@@ -3,9 +3,11 @@
 ## Equipos
 
 ### ArangoDB
+
 * César Sáenz
 
 ### MongoDB
+
 * Leonardo Alberto Gonzalez Carmona
 * Jesus Alberto Jacquez Fabela
 * Iran America Chavarria Monge
@@ -13,6 +15,7 @@
 * Maria Del Carmen Castillo Marquez
 
 ### Equipo Neo4j
+
 * Fernando Esparza Enriquez
 * Paola Guadalupe Muñoz Montes
 * Bryan Alexis Quintana Juarez
@@ -20,4 +23,14 @@
 * Gabriel Josue Marquez Torres
 
 ### Equipo Redis
+
 * Hector Alejandro Rodriguez Barron
+
+### Equipo Cassandra
+
+* Jorge Eduardo Escobar Bugarini
+* Edgar Gerardo Delgado Cerrillo
+* Jesús Alejandro Torres Ramírez
+* José Sebastian Lopez Ibarra
+* Andres Sáenz Olivas
+* Diego Gael Martín del Campo Loa
