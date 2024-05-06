@@ -3,13 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-04-2024 a las 02:52:50
+-- Tiempo de generación: 05-05-2024 a las 19:44:44
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone = "-06:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -30,37 +30,47 @@ DELIMITER $$
 --
 DROP PROCEDURE IF EXISTS `sp_order_operation`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_order_operation` (`p_id_order` INT, `p_id_order_detail` INT, `p_id_dogo` INT, `p_quantity` INT)   BEGIN
-DECLARE v_operation VARCHAR(20);
+	DECLARE v_operation VARCHAR(20);
+	DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+		ROLLBACK;
+		GET DIAGNOSTICS CONDITION 1 @p1 = RETURNED_SQLSTATE, @p2 = MESSAGE_TEXT;
+		SELECT CONCAT(@p1, ':', @p2) error, 'FAILURE' status, v_operation 'order type';
+	END;
 
-IF p_id_order > 0 THEN
-	SET v_operation = 'UPDATE ORDER';
-	IF p_id_order_detail > 0 THEN
-		UPDATE order_detail SET
-			id_dogo = p_id_dogo,
-            quantity = p_quantity
+	START TRANSACTION;
+
+	IF p_id_order > 0 THEN
+		SET v_operation = 'UPDATE ORDER';
+		IF p_id_order_detail > 0 THEN
+			UPDATE order_detail SET
+				id_dogo = p_id_dogo,
+				quantity = p_quantity
+			WHERE
+				id = p_id_order_detail;
+		ELSE
+			INSERT INTO order_detail (id_order, id_dogo, quantity)
+			VALUES (p_id_order, p_id_dogo, p_quantity);
+		END IF;
+		
+		UPDATE abd_dogo.order SET
+			total = f_order_total(p_id_order)
 		WHERE
-			id = p_id_order_detail;
+			id = p_id_order;
 	ELSE
+		SET v_operation = 'NEW ORDER';
+		
+		INSERT INTO abd_dogo.order (order_date, total)
+		VALUES (now(), (SELECT price * p_quantity FROM cat_dogo WHERE id = p_id_dogo));
+		
+		SET p_id_order = last_insert_id();
 		INSERT INTO order_detail (id_order, id_dogo, quantity)
-        VALUES (p_id_order, p_id_dogo, p_quantity);
+		VALUES (p_id_order, p_id_dogo, p_quantity);
 	END IF;
-	
-    UPDATE abd_dogo.order SET
-		total = f_order_total(p_id_order)
-	WHERE
-		id = p_id_order;
-ELSE
-	SET v_operation = 'NEW ORDER';
     
-	INSERT INTO abd_dogo.order (order_date, total)
-	VALUES (now(), (SELECT price * p_quantity FROM cat_dogo WHERE id = p_id_dogo));
-    
-    SET p_id_order = last_insert_id();
-    INSERT INTO order_detail (id_order, id_dogo, quantity)
-	VALUES (p_id_order, p_id_dogo, p_quantity);
-END IF;
+	COMMIT;
 
-SELECT p_id_order 'order id', v_operation 'order type';
+	SELECT p_id_order 'order id', v_operation 'order type';
 END$$
 
 --
