@@ -34,3 +34,7 @@
 * José Sebastian Lopez Ibarra
 * Andres Sáenz Olivas
 * Diego Gael Martín del Campo Loa
+
+### Equipo RavenDB
+
+* Brandon Federico López Torres
