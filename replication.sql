@@ -6,10 +6,10 @@
     binlog_do_db=abd_burger
 3. Open configuration file and after line 'server-id=1' paste the last 3 lines above.
 4. Restart services.
-5. Create user from server 1 with it IP address.
+5. Create user from server 1 with slave IP address.
 */
 
-GRANT REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO `mirror_master`@`192.168.50.26` IDENTIFIED BY PASSWORD '*1B6FCA07A1546E311BC69163257644D8DE2DC05C';
+GRANT REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO `mirror_slave`@`192.168.100.2` IDENTIFIED BY PASSWORD '*1B6FCA07A1546E311BC69163257644D8DE2DC05C';
 
 /* On SLAVE server do the following:
 1. Open configuration file, comment 'server-id=1' and uncomment 'server-id-2'.
@@ -19,7 +19,7 @@ GRANT REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO `mirror_master`@`192.168.5
 
 STOP SLAVE;
 CHANGE MASTER TO
-	master_host = '192.168.50.156',
+	master_host = '192.168.100.1',
     master_user = 'mirror_master',
     master_password = 'mirror',
     master_log_file = 'mysql-bin.000002', -- Depends on master server information.
