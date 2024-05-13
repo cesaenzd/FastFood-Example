@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-05-2024 a las 19:44:44
+-- Tiempo de generación: 12-05-2024 a las 08:00:46
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,7 +20,7 @@ SET time_zone = "-06:00";
 --
 -- Base de datos: `abd_dogo`
 --
--- DROP DATABASE IF EXISTS abd_dogo;
+DROP DATABASE IF EXISTS `abd_dogo`;
 CREATE DATABASE IF NOT EXISTS `abd_dogo` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `abd_dogo`;
 
