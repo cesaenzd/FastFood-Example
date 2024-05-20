@@ -1,13 +1,11 @@
 # Administracion de base de datos 8-9
 
-## Equipos
+### MongoDBVideo
+tecnologia utlizada php (edit visualcode),mysql (xampp y workbench)
 
-
-### Equipo MongoDB
 * Leonardo Alberto Gonzalez Carmona
-
+* Jesus Alberto Jacquez Fabela
 * Iran America Chavarria Monge
-
-### ArangoDB
-* César Sáenz
+* Ana Paulina Villegas Treviño
+* Maria Del Carmen Castillo Marquez
 
